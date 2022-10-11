@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body style="background-color: beige">
+<h2 style="display: flex;
+justify-content: center;
+text-align: center;
+align-content: center;
+margin: 0 auto;
+padding: 10px 20px;">Поиск пользователей</h2>
+<form
+        style="display: flex;
+justify-content: center;
+text-align: center;
+align-content: center;
+margin: 0 auto;
+padding: 10px 20px;"
+        method="post" th:action="${'/sotrudnik/filter/result'}">
+  <div>
+  <div style="width: 500px">
+  <input style="margin-bottom: 20px" class="form-control" type="text" name="surname">
+  <button style="margin-bottom: 20px" class="w-100 btn btn-primary btn-lg" type="submit">Найти</button>
+  </div>
+  <div style=" margin-top: 10px; margin-bottom: 10px;  background-color: azure; border: 1px solid  black; width: 500px;" th:each="el : ${result}">
+    <h3 th:text="${el.getName()}"></h3>
+    <p th:text="${el.getSurname()}"></p>
+    <p th:text="${el.getMiddlename()}"></p>
+    <a th:href="'/sotrudnik/' + ${el.id}"> Подробнее </a>
+
+  </div>
+    <a href="/Main">назад</a>
+  </div>
+</form>
+
+
+</body>
+</html>

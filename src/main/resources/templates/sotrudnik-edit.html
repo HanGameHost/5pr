@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование статьи</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: beige">
+    <form th:action = "@{/sotrudnik/{id}/edit(id=${Sotr.id})}" th:object="${Sotr}" method="post">
+    <input th:field="*{name}" type="text" th:value="${Sotr.getName()}" name="name" placeholder="Введите имя">
+    <div style="color: black" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+    <input th:field="*{surname}" type="text" th:value="${Sotr.getSurname()}" name="surname" placeholder="Введите фамилию">
+    <div style="color: black" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+    <input th:field="*{middlename}" type="text" th:value="${Sotr.getMiddlename()}" name="middlename" placeholder="Введите отчество">
+    <div style="color: black" th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"></div><br>
+        <select  name="nameDuty" th:value="${Sotr.getDuty()}">
+            <div th:each="element : ${duty}">
+                <option th:text="${element.nameDuty}"></option>
+            </div>
+        </select><br>
+    <input th:field="*{passportnumber}" type="number" th:value="${Sotr.getPassportnumber()}" name="passportnumber" placeholder="Номер П">
+    <div style="color: black" th:if="${#fields.hasErrors('passportnumber')}" th:errors="*{passportnumber}"></div><br>
+    <input th:field="*{passportseries}" type="number" th:value="${Sotr.getPassportseries()}" name="passportseries" placeholder="Серия П">
+    <div style="color: black" th:if="${#fields.hasErrors('passportseries')}" th:errors="*{passportseries}"></div><br>
+    <br>
+        <input th:field="*{phonenumber}" type="number" th:value="${Sotr.getPhonenumber()}" name="phonenumber" placeholder="Номер телефона">
+        <div style="color: black" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></div><br>
+
+        <input th:field="*{username}" type="text" th:value="${Sotr.getUsername()}" name="username" placeholder="Логин">
+        <div style="color: black" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div><br>
+        <input th:field="*{password}" type="text" th:value="${Sotr.getPassword()}" name="password" placeholder="пароль">
+        <div style="color: black" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div><br>
+        <button type="submit">Сохранить изменения</button>
+        <a href="/Main">назад</a>
+    </form>
+</body>
+</html>

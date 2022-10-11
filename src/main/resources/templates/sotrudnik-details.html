@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body style="background-color: beige">
+<div th:each="el : ${res}">
+  <h3>Подробнее о пользователе: </h3>
+  <h3 th:text="${el.getName()}"></h3>
+  <p th:text="${el.getSurname()}"></p>
+  <p th:text="${el.getMiddlename()}"></p>
+  <p th:text="${el.getDuty().nameDuty.toString()}"></p>
+  <p th:text="${el.getPassportnumber()}"></p>
+  <p th:text="${el.getPassportseries()}"></p>
+  <p th:text="${el.getPhonenumber()}"></p>
+  <p th:text="${el.getUsername()}"></p>
+  <p th:text="${el.getPassword()}"></p>
+  <a th:href="'/sotrudnik/' + ${el.id} + '/edit'">Редактировать</a>
+  <form th:action="'/sotrudnik/' + ${el.id} + '/remove'" method="post">
+    <button type="submit" class="btn btn-del">Удалить</button>
+    <a href="/Main">назад</a>
+  </form>
+</div>
+</body>
